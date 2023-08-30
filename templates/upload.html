@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload to S3</title>
+</head>
+<body>
+    <h2>Upload File</h2>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+    <br>
+    <a href="/files">List files in S3</a>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>S3 Pre-signed URL Generator</title>
+  </head>
+  <body>
+
+    <h1>S3 Pre-signed URL Generator</h1>
+    <form action="/" method="post">
+      <label for="bucket_name">Bucket Name:</label>
+      <input type="text" id="bucket_name" name="bucket_name" required>
+      <br>
+      <label for="object_name">Object Name (filename):</label>
+      <input type="text" id="object_name" name="object_name" required>
+      <br>
+      <button type="submit">Generate URL</button>
+    </form>
+
+    <h2>Response:</h2>
+    <pre id="response"></pre>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", async (event) => {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const response = await fetch("/", {
+                method: "POST",
+                body: formData
+            });
+            const data = await response.json();
+            document.querySelector("#response").textContent = JSON.stringify(data, null, 2);
+        });
+    </script>
+  </body>
+</html>
