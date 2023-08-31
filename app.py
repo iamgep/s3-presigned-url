@@ -5,8 +5,8 @@ import os
 app = Flask(__name__)
 
 # AWS configuration from environment variables
-AWS_ACCESS_KEY = os.environ.get('AKIATEQSIGRWRAIM3XKT')
-AWS_SECRET_KEY = os.environ.get('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')
+AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY')
+AWS_SECRET_KEY = os.environ.get('AWS_SECRET_KEY')
 BUCKET_NAME = 'my-flaskapp-bucket'
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -73,4 +73,5 @@ def get_download_url(filename):
     return jsonify({'url': url})
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
+
